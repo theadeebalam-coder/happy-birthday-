@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Ammi | Sharya Naaz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7a1c2b">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- AUDIO (LOCAL MP3 ONLY) -->
+<audio id="birthdaySong" preload="auto">
+  <source src="tu-kitni-achhi-hai.mp3" type="audio/mpeg">
+</audio>
+
+<!-- INSTALL APP POPUP -->
+<div id="installBox" style="
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#7a1c2b;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:30px;
+  display:none;
+  z-index:9999;
+  font-family:Poppins,sans-serif;
+">
+  📱 Download App
+  <button id="installBtn" style="
+    margin-left:14px;
+    background:#fff;
+    color:#6d1223;
+    border:none;
+    padding:6px 18px;
+    border-radius:20px;
+    cursor:pointer;
+  ">Install</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Happy Birthday Ammi</h1>
+  <h2>Sharya Naaz</h2>
+  <p>
+    Ammi, is page par jab aap tap karogi,  
+    to ek gaana bajega.  
+    Ye gaana meri taraf se aapke liye hai,  
+    kyunki “Tu Kitni Achhi Hai”  
+    sirf ek song nahi —  
+    aapki poori zindagi ki kahaani hai.
+  </p>
+
+  <!-- PLAY BUTTON -->
+  <button onclick="playSong()" style="
+    margin-top:30px;
+    background:#fdecef;
+    color:#6d1223;
+    border:none;
+    padding:14px 36px;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+  ">
+    ▶ Play Song
+  </button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h2>My Life Begins With You</h2>
+  <p>
+    Jab main kuch bhi nahi tha,  
+    tab bhi aap mere saath thi.  
+    Aap meri pehli teacher ho,  
+    meri pehli himmat ho.
+  </p>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>A Mother’s Sacrifice</h2>
+  <p>
+    Aapne apni neend chhodi,  
+    apni khushi chhodi,  
+    taaki meri zindagi aasaan ho.
+  </p>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h2>Memories</h2>
+  <p>
+    Har yaad mein aap ho Ammi.  
+    Har safalta ke peeche aapki dua hai.
+  </p>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h2>Tu Kitni Achhi Hai</h2>
+  <p>
+    Is gaane ka har bol  
+    aap par poori tarah fit baithta hai.  
+    Maa jaisi koi nahi hoti.
+  </p>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <h2>My Promise</h2>
+  <p>
+    Aapki izzat aur khushi  
+    meri zindagi ka sabse bada farz rahegi.
+  </p>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <h2>Dua 🤲</h2>
+  <p>
+    Ya Allah, meri Ammi ko  
+    sehat, sukoon aur lambi umar ata farma.  
+    Ameen.
+  </p>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <h2>My Strength</h2>
+  <p>
+    Jab main kamzor padta hoon,  
+    aap meri taqat ban jaati ho.
+  </p>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <h2>Forever My Queen 👑</h2>
+  <p>
+    Aap meri maa nahi,  
+    meri poori duniya ho.
+  </p>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <h2>Happy Birthday Ammi ❤️</h2>
+  <p>
+    Aaj bhi, kal bhi,  
+    aur hamesha aap meri dua rahogi.
+  </p>
+  <footer>Developed by <strong>Adeeb Alam</strong></footer>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button id="prev" onclick="move(-1)">⬅ Prev</button>
+  <button id="next" onclick="move(1)">Next ➡</button>
+</div>
+
+<script>
+/* PAGE SWITCH */
+let current = 0;
+const pages = document.querySelectorAll('.page');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+function move(step){
+  pages[current].classList.remove('active');
+  current += step;
+  pages[current].classList.add('active');
+  prev.disabled = current === 0;
+  next.disabled = current === pages.length - 1;
+}
+
+/* SONG PLAY ON CLICK */
+const song = document.getElementById('birthdaySong');
+function playSong(){
+  song.play().catch(()=>{});
+}
+
+/* PWA INSTALL */
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBox').style.display = 'block';
+});
+document.getElementById('installBtn').onclick = () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt = null;
+  document.getElementById('installBox').style.display = 'none';
+};
+</script>
+
+</body>
+</html>
