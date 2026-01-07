@@ -1,0 +1,124 @@
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#6d1223;                 /* Qatar maroon base */
+  color:#fdecef;
+  font-family:'Poppins', sans-serif;
+  text-align:center;
+}
+
+/* ================= PAGE SYSTEM ================= */
+.page{
+  display:none;
+  min-height:100vh;
+  padding:70px 12%;
+  background:linear-gradient(
+    180deg,
+    #6d1223 0%,
+    #7a1c2b 50%,
+    #8b1f34 100%
+  );
+}
+
+.page.active{
+  display:block;
+  animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= HEADINGS ================= */
+h1{
+  font-family:'Great Vibes', cursive;
+  font-size:4rem;
+  color:#ffffff;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+h2{
+  font-family:'Playfair Display', serif;
+  font-size:2.4rem;
+  color:#f8d7dc;
+  margin-bottom:25px;
+}
+
+/* ================= TEXT ================= */
+p{
+  font-size:1.15rem;
+  line-height:2.2;
+  color:#fdecef;
+}
+
+/* ================= NAVIGATION ================= */
+.nav{
+  position:fixed;
+  bottom:20px;
+  width:100%;
+  z-index:10;
+}
+
+button{
+  background:#fdecef;
+  color:#6d1223;
+  border:none;
+  padding:12px 34px;
+  margin:6px;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all .3s ease;
+}
+
+button:hover{
+  background:#ffffff;
+  transform:translateY(-2px);
+}
+
+button:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  margin-top:45px;
+  font-size:14px;
+  color:#ffd6dd;
+  letter-spacing:.5px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  h1{
+    font-size:2.8rem;
+  }
+  h2{
+    font-size:1.8rem;
+  }
+  p{
+    font-size:1.05rem;
+  }
+  .page{
+    padding:60px 8%;
+  }
+}
