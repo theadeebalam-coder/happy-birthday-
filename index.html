@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Ammi | Sharya Naaz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7a1c2b">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- INSTALL APP POPUP -->
+<div id="installBox" style="
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#7a1c2b;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:30px;
+  display:none;
+  z-index:9999;
+  font-family:Poppins,sans-serif;
+">
+  📱 Download App
+  <button id="installBtn" style="
+    margin-left:14px;
+    background:#fff;
+    color:#6d1223;
+    border:none;
+    padding:6px 18px;
+    border-radius:20px;
+    cursor:pointer;
+  ">Install</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Happy Birthday Ammi</h1>
+  <h2>Sharya Naaz</h2>
+  <p>
+    Ammi, ye website koi normal cheez nahi hai.  
+    Ye meri zindagi ke un jazbaaton ka safar hai  
+    jo main kabhi theek se keh nahi paaya.  
+    Har page ek ehsaas hai, har lafz ek dua,  
+    aur har click meri taraf se aapke liye mohabbat.
+  </p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h2>My Life Begins With You</h2>
+  <p>
+    Jab main duniya ko samajhne se pehle tha,  
+    tab aap mujhe samajh chuki thi.  
+    Aap meri pehli teacher ho,  
+    meri pehli himmat ho,  
+    aur meri zindagi ki buniyad ho.
+  </p>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>A Son’s Gratitude</h2>
+  <p>
+    Ammi, aapne apni neend chhodi,  
+    apni khushi chhodi,  
+    taaki meri zindagi aasan ho sake.  
+    Aap thaki hongi, par kabhi dikhaya nahi.  
+    Ye hi maa hoti hai.
+  </p>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h2>Memories That Never Fade</h2>
+  <p>
+    Har yaad mein aapka haath hai.  
+    Har mushkil ke peeche aapka sahara hai.  
+    Aaj main jo bhi hoon,  
+    uska har hissa sirf aap ho Ammi.
+  </p>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h2>Dua For You 🤲</h2>
+  <p>
+    Ya Allah, meri Ammi Sharya Naaz ko  
+    sehat, lambi umar, izzat aur sukoon ata farma.  
+    Unke chehre se muskaan kabhi kam na hone dena.  
+    Unke dil ko hamesha tasalli dena.  
+    Ameen.
+  </p>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <h2>My Promise</h2>
+  <p>
+    Ammi, main wada karta hoon  
+    chahe zindagi mujhe jahan bhi le jaaye,  
+    aapki izzat aur aapki khushi  
+    meri zindagi ka sabse pehla farz rahegi.
+  </p>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <h2>Forever My Queen 👑</h2>
+  <p>
+    Aap sirf meri maa nahi ho,  
+    aap meri rehmat ho, meri pehchan ho,  
+    aur meri har dua ka sabse khoobsurat jawab ho.  
+    Happy Birthday Ammi ❤️
+  </p>
+  <footer>
+    Developed by <strong>Adeeb Alam</strong>
+  </footer>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button id="prev" onclick="move(-1)">⬅ Prev</button>
+  <button id="next" onclick="move(1)">Next ➡</button>
+</div>
+
+<script>
+/* PAGE SWITCH */
+let current = 0;
+const pages = document.querySelectorAll('.page');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+function move(step){
+  pages[current].classList.remove('active');
+  current += step;
+  pages[current].classList.add('active');
+  prev.disabled = current === 0;
+  next.disabled = current === pages.length - 1;
+}
+
+/* PWA INSTALL */
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBox').style.display = 'block';
+});
+
+document.getElementById('installBtn').onclick = async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt = null;
+  document.getElementById('installBox').style.display = 'none';
+};
+</script>
+
+</body>
+</html>
