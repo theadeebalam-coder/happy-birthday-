@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Ammi | Sharya Naaz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#7a1c2b">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      background:#6d1223;
+      color:#f5e9ec;
+      font-family:'Poppins',sans-serif;
+      text-align:center;
+    }
+    .page{
+      display:none;
+      min-height:100vh;
+      padding:70px 12%;
+      background:linear-gradient(180deg,#6d1223,#8b1f34);
+    }
+    .page.active{display:block;}
+    h1{
+      font-family:'Great Vibes',cursive;
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:20px;
+      letter-spacing:2px;
+    }
+    h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.4rem;
+      color:#f8d7dc;
+      margin-bottom:25px;
+    }
+    p{
+      font-size:1.15rem;
+      line-height:2.2;
+      color:#fdecef;
+    }
+    .nav{
+      position:fixed;
+      bottom:20px;
+      width:100%;
+      text-align:center;
+    }
+    button{
+      background:#f8d7dc;
+      color:#6d1223;
+      border:none;
+      padding:12px 30px;
+      margin:5px;
+      border-radius:30px;
+      font-size:16px;
+      cursor:pointer;
+      font-weight:500;
+    }
+    button:disabled{
+      opacity:0.4;
+    }
+    footer{
+      margin-top:40px;
+      font-size:14px;
+      color:#ffd6dd;
+    }
+
+    /* Install Banner */
+    #installBox{
+      position:fixed;
+      top:20px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#8b1f34;
+      color:#fff;
+      padding:14px 26px;
+      border-radius:30px;
+      display:none;
+      z-index:9999;
+    }
+    #installBox button{
+      margin-left:15px;
+      background:#fff;
+      color:#6d1223;
+      padding:6px 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- INSTALL PROMPT -->
+<div id="installBox">
+  📱 Download App
+  <button id="installBtn">Install</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Happy Birthday Ammi</h1>
+  <h2>Sharya Naaz</h2>
+  <p>
+    Ammi, ye website ek normal gift nahi hai.  
+    Ye meri har saans mein basa hua pyaar hai.  
+    Har page ek ehsaas hai, har lafz ek dua hai,  
+    aur har click meri taraf se aapke liye izzat aur mohabbat.
+  </p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h2>My Life Starts With You</h2>
+  <p>
+    Jab duniya ne mujhe pehchanna bhi shuru nahi kiya tha,  
+    tab aap mujhe apni poori duniya bana chuki thi.  
+    Aapne mujhe chalna sikhaya, bolna sikhaya,  
+    aur sabse zyada – insaan banna sikhaya.
+  </p>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>A Son’s Endless Gratitude</h2>
+  <p>
+    Ammi, aapne apne sapne chhode,  
+    taaki mere sapne zinda reh sakein.  
+    Aapne apni thakaan chhupayi,  
+    taaki mujhe kabhi kamzor mehsoos na ho.
+  </p>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h2>Memories Written In My Soul</h2>
+  <p>
+    Har yaad mein aapka chehra hai.  
+    Har khushi ke peeche aapki mehnat hai.  
+    Har kamyabi ke peeche aapki dua hai.  
+    Ye pages meri zindagi ke un lamhon jaise hain  
+    jo kabhi khatam nahi honge.
+  </p>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h2>Dua For You 🤲</h2>
+  <p>
+    Ya Allah, meri Ammi Sharya Naaz ko  
+    sehat, lambi umar, izzat aur sukoon ata farma.  
+    Unke dil ko hamesha khush rakhna,  
+    aur unki zindagi ko roshni se bhar dena.  
+    Ameen.
+  </p>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <h2>My Promise</h2>
+  <p>
+    Ammi, main wada karta hoon  
+    chahe zindagi mujhe jahan bhi le jaaye,  
+    aapki izzat, aapki khushi  
+    hamesha meri pehli zimmedari rahegi.
+  </p>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <h2>Forever My Queen 👑</h2>
+  <p>
+    Aap sirf meri maa nahi ho,  
+    aap meri rehmat ho, meri pehchan ho,  
+    aur meri har dua ka sabse khoobsurat jawab ho.  
+    Happy Birthday Ammi.
+  </p>
+
+  <footer>
+    Developed by <strong>Adeeb Alam</strong>
+  </footer>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button id="prev" onclick="move(-1)">⬅ Prev</button>
+  <button id="next" onclick="move(1)">Next ➡</button>
+</div>
+
+<script>
+  let current=0;
+  const pages=document.querySelectorAll('.page');
+  const prev=document.getElementById('prev');
+  const next=document.getElementById('next');
+
+  function move(dir){
+    pages[current].classList.remove('active');
+    current+=dir;
+    pages[current].classList.add('active');
+    prev.disabled=current===0;
+    next.disabled=current===pages.length-1;
+  }
+
+  // PWA Install
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    deferredPrompt=e;
+    document.getElementById('installBox').style.display='block';
+  });
+  document.getElementById('installBtn').onclick=async()=>{
+    if(!deferredPrompt)return;
+    deferredPrompt.prompt();
+    deferredPrompt=null;
+    document.getElementById('installBox').style.display='none';
+  }
+</script>
+
+</body>
+</html>
