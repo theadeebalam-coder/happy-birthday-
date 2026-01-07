@@ -1,0 +1,10 @@
+{
+  "name": "Happy Birthday Ammi – Sharya Naaz",
+  "short_name": "Ammi Birthday",
+  "description": "A birthday PWA made with love for Ammi.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#6d1223",
+  "theme_color": "#7a1c2b",
+  "orientation": "portrait"
+}
